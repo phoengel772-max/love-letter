@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="my">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confession Letter 💌</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;
+font-family:system-ui,"Noto Sans Myanmar",sans-serif;color:#694454;overflow:hidden;
+background:linear-gradient(135deg,#fff8fb,#fce3ed,#fff4f8)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.4;
+background-image:radial-gradient(#e99fbc 2px,transparent 2px);background-size:34px 34px}
+.float{position:fixed;font-size:24px;animation:drift 9s linear infinite;pointer-events:none}
+@keyframes drift{from{transform:translateY(110vh) rotate(0)}to{transform:translateY(-20vh) rotate(35deg)}}
+.card{position:relative;width:min(100%,410px);min-height:390px;padding:28px 22px;
+display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+background:#ffffffd9;border:1px solid white;border-radius:26px;
+box-shadow:0 18px 55px #b75e8125;backdrop-filter:blur(8px)}
+h1{font-size:24px;color:#bd557d;margin:12px 0}
+p{font-size:16px;line-height:1.9;white-space:pre-line;margin:8px 0 20px}
+button{font:inherit;border:0;border-radius:999px;padding:12px 22px;margin:5px;
+background:#df6c98;color:white;font-weight:700;box-shadow:0 4px 0 #bd4d7c;cursor:pointer}
+button.secondary{background:#f5edf1;color:#8b6475;box-shadow:none}
+.envelope{position:relative;font-size:105px;border:0;background:none;box-shadow:none;padding:10px;animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-9px)}}
+.hint{font-size:13px;color:#b07b91}
+.hidden{display:none!important}
+.letter{background:#fffafc;border-radius:14px;padding:20px 17px;border:1px solid #f4dbe5}
+</style>
+</head>
+<body>
+<div class="float" style="left:8%;animation-delay:-2s">💗</div>
+<div class="float" style="left:80%;animation-delay:-5s">💕</div>
+<div class="float" style="left:60%;animation-delay:-7s">🌸</div>
+<main class="card">
+  <section id="step1">
+    <div style="font-size:50px">💌</div>
+    <h1>Someone has a letter for you 💗</h1>
+    <p>မင်းအတွက် စာလေးတစ်စောင်ရှိတယ်နော်…</p>
+    <div class="envelope" role="button" aria-label="စာအိတ်ဖွင့်ရန်" onclick="go(2)">💌</div>
+    <div class="hint">👇 Click the floating envelope!</div>
+    <button onclick="go(2)">စာအိတ်ဖွင့်မယ် 💌</button>
+  </section>
+  <section id="step2" class="hidden">
+    <div style="font-size:45px">💗</div>
+    <h1>Confession Letter 💌</h1>
+    <div class="letter">
+      <p>မင်းရေ… မင်းကို ပြောချင်တဲ့စကားလေးတစ်ခုရှိတယ်။ ❤️
+မင်းနဲ့ စကားပြောရတဲ့အချိန်တိုင်း ပျော်ရွှင်ရတယ်။
+မင်းရဲ့အပြုံးလေးက ကိုယ့်နေ့ရက်တွေကို ပိုလှပစေတယ်။
+ဒီစာလေးကို ဖတ်ပြီး ကိုယ့်ခံစားချက်ကို နားလည်ပေးမယ်လို့ မျှော်လင့်ပါတယ်။ 🥹💗</p>
+    </div>
+    <button onclick="go(3)">နောက်တစ်ဆင့် 💕</button>
+  </section>
+  <section id="step3" class="hidden">
+    <div style="font-size:75px" id="sticker">🥹💗</div>
+    <h1>ငါ့ကို တကယ်ချစ်လား? 💞</h1>
+    <p>အမှန်အတိုင်း ဖြေပေးနော်… 🥺</p>
+    <div><button onclick="yes()">💗 Yes</button><button class="secondary" onclick="no()">💔 No</button></div>
+    <p id="result" aria-live="polite"></p>
+  </section>
+</main>
+<script>
+function go(n){for(let i=1;i<=3;i++)document.getElementById('step'+i).classList.toggle('hidden',i!==n)}
+function yes(){document.getElementById('sticker').textContent='🥰💖';document.getElementById('result').textContent='ဟီးဟီး… ကိုယ်လည်း မင်းကို အရမ်းချစ်တယ်နော်! 💋💕'}
+function no(){document.getElementById('sticker').textContent='🥺💔';document.getElementById('result').textContent='ဟင့်အင်း… ပြန်စဉ်းစားပေးပါဦးနော် 😭💗'}
+</script>
+</body>
+</html>
